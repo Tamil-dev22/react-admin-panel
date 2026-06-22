@@ -3,12 +3,13 @@ import { noAuthRoutes } from "./routes/noAuthRoutes";
 import { authRoutes } from "./routes/authRoutes";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
+import { ToastContainer } from "react-toastify";
 
 
 
 function App() {
-  return (
-    <BrowserRouter>
+  return (<>
+   <BrowserRouter>
       <Routes>
         {noAuthRoutes.map((route) => (
           <Route
@@ -35,6 +36,12 @@ function App() {
         ))}
       </Routes>
     </BrowserRouter>
+          <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
+  </>
+   
   );
 }
 

@@ -5,5 +5,6 @@ export const NO_AUTH_ROUTES = {
 export const AUTH_ROUTES = {
   DASHBOARD: "/dashboard",
   USERS: "/users",
-  PROFILE: "/profile",
+   ADD_USER: "/users/add",
+  EDIT_USER: "/users/:id",
 };
