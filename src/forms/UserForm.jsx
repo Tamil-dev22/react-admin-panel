@@ -20,25 +20,25 @@ const UserForm = () => {
     });
 
 
-useEffect(() => {
-  if (id) {
-    const users = JSON.parse(
-      localStorage.getItem("users")
-    );
+    useEffect(() => {
+        if (id) {
+            const users = JSON.parse(
+                localStorage.getItem("users")
+            );
 
-    const user = users.find(
-      (u) => u.id === Number(id)
-    );
+            const user = users.find(
+                (u) => u.id === Number(id)
+            );
 
-    if (user) {
-      setFormData(user);
-    }
-  }
-}, [id]);
+            if (user) {
+                setFormData(user);
+            }
+        }
+    }, [id]);
 
 
 
-const handleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value, type, checked, files } = e.target;
 
         if (type === "checkbox" && name === "skills") {
@@ -72,48 +72,48 @@ const handleChange = (e) => {
                 [name]: value,
             });
         }
-};
+    };
 
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-  const users =
-    JSON.parse(localStorage.getItem("users")) || [];
+        const users =
+            JSON.parse(localStorage.getItem("users")) || [];
 
-  if (id) {
-    const updatedUsers = users.map((user) =>
-      user.id === Number(id)
-        ? { ...formData, id: Number(id) }
-        : user
-    );
+        if (id) {
+            const updatedUsers = users.map((user) =>
+                user.id === Number(id)
+                    ? { ...formData, id: Number(id) }
+                    : user
+            );
 
-    localStorage.setItem(
-      "users",
-      JSON.stringify(updatedUsers)
-    );
+            localStorage.setItem(
+                "users",
+                JSON.stringify(updatedUsers)
+            );
 
-    toast.success("User Updated");
-  } else {
- const newUser = {
-  ...formData,
-  id: users.length
-    ? Math.max(...users.map(u => u.id)) + 1
-    : 1,
-};
+            toast.success("User Updated");
+        } else {
+            const newUser = {
+                ...formData,
+                id: users.length
+                    ? Math.max(...users.map(u => u.id)) + 1
+                    : 1,
+            };
 
-    users.push(newUser);
+            users.push(newUser);
 
-    localStorage.setItem(
-      "users",
-      JSON.stringify(users)
-    );
+            localStorage.setItem(
+                "users",
+                JSON.stringify(users)
+            );
 
-      toast.success("User Added");
-  }
+            toast.success("User Added");
+        }
 
-  navigate("/users");
-};
+        navigate("/users");
+    };
 
     return (
         <div className="container mt-4">
@@ -242,7 +242,7 @@ const handleSubmit = (e) => {
                                         className="form-check-input"
                                         name="skills"
                                         value="React"
-                                          checked={formData.skills.includes("React")}
+                                        checked={formData.skills.includes("React")}
                                         onChange={handleChange}
                                     />
                                     <label className="form-check-label">
@@ -256,7 +256,7 @@ const handleSubmit = (e) => {
                                         className="form-check-input"
                                         name="skills"
                                         value="Angular"
-                                          checked={formData.skills.includes("Angular")}
+                                        checked={formData.skills.includes("Angular")}
                                         onChange={handleChange}
                                     />
                                     <label className="form-check-label">
@@ -270,7 +270,7 @@ const handleSubmit = (e) => {
                                         className="form-check-input"
                                         name="skills"
                                         value="NodeJS"
-                                          checked={formData.skills.includes("NodeJS")}
+                                        checked={formData.skills.includes("NodeJS")}
                                         onChange={handleChange}
                                     />
                                     <label className="form-check-label">
