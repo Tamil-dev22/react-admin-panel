@@ -4,7 +4,9 @@ import { toast } from "react-toastify";
 
 const UserForm = () => {
     const { id } = useParams();
+
     const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -16,6 +18,8 @@ const UserForm = () => {
         image: null,
         status: true,
     });
+
+
 useEffect(() => {
   if (id) {
     const users = JSON.parse(
@@ -31,7 +35,10 @@ useEffect(() => {
     }
   }
 }, [id]);
-    const handleChange = (e) => {
+
+
+
+const handleChange = (e) => {
         const { name, value, type, checked, files } = e.target;
 
         if (type === "checkbox" && name === "skills") {
@@ -65,7 +72,9 @@ useEffect(() => {
                 [name]: value,
             });
         }
-    };
+};
+
+
 const handleSubmit = (e) => {
   e.preventDefault();
 

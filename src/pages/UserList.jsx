@@ -3,6 +3,7 @@ import USER_LIST from "../mockData/userList";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 const UserList = () => {
+
     const [users, setUsers] = useState(() => {
         const storedUsers = localStorage.getItem("users");
 
@@ -10,7 +11,11 @@ const UserList = () => {
             ? JSON.parse(storedUsers)
             : USER_LIST;
     });
+
+
+
     const navigate = useNavigate();
+
     useEffect(() => {
         localStorage.setItem(
             "users",
@@ -18,6 +23,8 @@ const UserList = () => {
         );
     }, [users]);
 
+
+    
     const handleDelete = (id) => {
         const confirmDelete = window.confirm(
             "Are you sure you want to delete this user?"
@@ -33,6 +40,11 @@ const UserList = () => {
 
         toast.success("User deleted successfully!");
     };
+
+
+
+
+
     return (
         <div className="container mt-4">
             <div className="d-flex justify-content-between align-items-center mb-3">
